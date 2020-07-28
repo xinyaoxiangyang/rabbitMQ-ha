@@ -595,3 +595,8 @@ podDisruptionBudget: {}
   # minAvailable: 1
 
 lifecycle: {}
+
+# macvlan configuration
+macvlan:
+  ip: "auto"
+  subnet: "vlan700"

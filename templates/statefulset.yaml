@@ -36,6 +36,10 @@ spec:
 {{ toYaml .Values.extraLabels | indent 8 }}
 {{- end }}
       annotations:
+        k8s.v1.cni.cncf.io/networks: '[{"name":"static-macvlan-cni-attach","interface":"eth1"}]'
+        macvlan.pandaria.cattle.io/ip: {{ .Values.macvlan.ip }}
+        macvlan.pandaria.cattle.io/mac: auto
+        macvlan.pandaria.cattle.io/subnet: {{ .Values.macvlan.subnet }}
         {{- if not .Values.existingConfigMap }}
         checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
         {{- end }}
